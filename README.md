@@ -6,13 +6,17 @@
 ```shell
 pip list
 ```
-- Caso seja listado o `pytest` e/ou `pytest-testdox` em seu ambiente global, utilize os seguintes comando para desinstalá-los globalmente:
+- Caso seja listado o `pytest` e/ou `pytest-testdox` e/ou `pytest-django` em seu ambiente global, utilize os seguintes comando para desinstalá-los globalmente:
 ```shell
 pip uninstall pytest
 ```
 
 ```shell
 pip uninstall pytest-testdox
+```
+
+```shell
+pip uninstall pytest-django
 ```
 
 A partir disso, prossiga com os passos:
