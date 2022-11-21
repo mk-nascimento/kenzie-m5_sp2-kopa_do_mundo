@@ -39,3 +39,19 @@ class TeamModelTest(TestCase):
         result = Team._meta.get_field("founded_at").null
         msg = f"Verifique se o atributo `founded_at` foi definido como opcional"
         self.assertTrue(result, msg)
+
+    def test_object_representation(self):
+        team_1_data = {
+            "name": "Brasil",
+            "titles": 5,
+            "top_scorer": "Pelé",
+            "fifa_code": "BRA",
+            "founded_at": "1914-06-08",
+        }
+        # Criando time 1
+        team = Team.objects.create(**team_1_data)
+
+        msg = "Verifique se a representação de objetos de Team está de acordo com o pedido"
+        expected = "<[1] Brasil - BRA>"
+        result = team.__repr__()
+        self.assertEqual(expected, result, msg)
