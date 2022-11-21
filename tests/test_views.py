@@ -152,3 +152,54 @@ class TeamViewsTest(APITestCase):
 
         msg = "Verifique se o registro está sendo deletado do banco corretamente"
         self.assertFalse(Team.objects.exists(), msg)
+       
+    def test_if_non_existing_id_deletion(self):
+        non_existing_id_url = self.BASE_URL + "12234/"
+        response = self.client.delete(non_existing_id_url)
+
+        expected_status_code = status.HTTP_404_NOT_FOUND
+        result_status_code = response.status_code
+        msg = (
+            "Verifique se o status code retornado do DELETE com id inválido"
+            + f"em `{non_existing_id_url}` é {expected_status_code}"
+        )
+        self.assertEqual(expected_status_code, result_status_code, msg)
+
+        expected = {"message": "Team not found"}
+        result = response.json()
+        msg = "Verifique se a mensagem de DELETE com id inválido está correta"
+        self.assertDictEqual(expected, result, msg)
+
+    def test_if_non_existing_id_update(self):
+        non_existing_id_url = self.BASE_URL + "12234/"
+        response = self.client.patch(non_existing_id_url)
+
+        expected_status_code = status.HTTP_404_NOT_FOUND
+        result_status_code = response.status_code
+        msg = (
+            "Verifique se o status code retornado do PATCH com id inválido"
+            + f"em `{non_existing_id_url}` é {expected_status_code}"
+        )
+        self.assertEqual(expected_status_code, result_status_code, msg)
+
+        expected = {"message": "Team not found"}
+        result = response.json()
+        msg = "Verifique se a mensagem de PATCH com id inválido está correta"
+        self.assertDictEqual(expected, result, msg)
+
+    def test_if_non_existing_id_retrieve(self):
+        non_existing_id_url = self.BASE_URL + "12234/"
+        response = self.client.get(non_existing_id_url)
+
+        expected_status_code = status.HTTP_404_NOT_FOUND
+        result_status_code = response.status_code
+        msg = (
+            "Verifique se o status code retornado do GET com id inválido"
+            + f"em `{non_existing_id_url}` é {expected_status_code}"
+        )
+        self.assertEqual(expected_status_code, result_status_code, msg)
+
+        expected = {"message": "Team not found"}
+        result = response.json()
+        msg = "Verifique se a mensagem de GET com id inválido está correta"
+        self.assertDictEqual(expected, result, msg)
