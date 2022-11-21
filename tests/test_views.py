@@ -1,3 +1,4 @@
+from datetime import date
 from rest_framework.test import APITestCase
 from teams.models import Team
 from rest_framework.views import status
@@ -113,10 +114,17 @@ class TeamViewsTest(APITestCase):
         self.assertEqual(expected_status_code, result_status_code, msg)
 
         expected_data = {**team_1_patch_data, "id": 1}
-
         result_data = response.json()
         msg = "Verifique se as informações das seleções são atualizadas corretamente"
         self.assertEqual(expected_data, result_data, msg)
+
+        team = Team.objects.get(id=1)
+        for key, value in expected_data.items():
+            obj_value = getattr(team, key)
+            if isinstance(obj_value, date):
+                obj_value = obj_value.strftime("%Y-%m-%d")
+            msg = f'Verifique se as alterações no campo `{key}` foram persistidas no banco'
+            self.assertEqual(value, obj_value, msg)
 
     def test_if_a_team_can_be_deleted(self):
         team_1_data = {
@@ -141,3 +149,6 @@ class TeamViewsTest(APITestCase):
 
         msg = "Verifique se a deleção não está retornando nenhum body"
         self.assertRaises(TypeError, response.json)
+
+        msg = "Verifique se o registro está sendo deletado do banco corretamente"
+        self.assertFalse(Team.objects.exists(), msg)
