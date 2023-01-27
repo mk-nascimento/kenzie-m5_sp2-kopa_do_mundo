@@ -35,9 +35,9 @@ class TeamModelTest(TestCase):
         msg = f"Verifique se o atributo `fifa_code` foi definido como unico"
         self.assertTrue(result, msg)
 
-    def test_founded_at_properties(self):
-        result = Team._meta.get_field("founded_at").null
-        msg = f"Verifique se o atributo `founded_at` foi definido como opcional"
+    def test_first_cup_properties(self):
+        result = Team._meta.get_field("first_cup").null
+        msg = f"Verifique se o atributo `first_cup` foi definido como opcional"
         self.assertTrue(result, msg)
 
     def test_object_representation(self):
@@ -46,7 +46,7 @@ class TeamModelTest(TestCase):
             "titles": 5,
             "top_scorer": "Pelé",
             "fifa_code": "BRA",
-            "founded_at": "1914-06-08",
+            "first_cup": "1914-06-08",
         }
         # Criando time 1
         team = Team.objects.create(**team_1_data)
