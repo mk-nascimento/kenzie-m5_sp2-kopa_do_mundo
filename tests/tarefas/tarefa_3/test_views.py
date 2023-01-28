@@ -1,6 +1,7 @@
 from rest_framework.test import APITestCase
 from teams.models import Team
 from rest_framework.views import status
+from datetime import date
 
 
 class TeamViewsTest(APITestCase):
@@ -15,17 +16,14 @@ class TeamViewsTest(APITestCase):
             "titles": 5,
             "top_scorer": "Pelé",
             "fifa_code": "BRA",
-            "first_cup": "1904-06-08",
+            "first_cup": "1930-07-13",
         }
         # Criando time 1
         Team.objects.create(**team_1_data)
 
         team_1_patch_data = {
             "name": "Brasil 5000",
-            "titles": 1000,
             "top_scorer": "Alejo",
-            "fifa_code": "BRR",
-            "first_cup": "2020-03-03",
         }
         response = self.client.patch(
             self.BASE_DETAIL_URL, data=team_1_patch_data, format="json"
@@ -39,16 +37,14 @@ class TeamViewsTest(APITestCase):
         )
         self.assertEqual(expected_status_code, result_status_code, msg)
 
-        expected_data = {**team_1_patch_data, "id": 1}
+        expected_data = {**team_1_data, **team_1_patch_data, "id": 1}
         result_data = response.json()
-        msg = "Verifique se as informações das seleções são atualizadas corretamente"
+        msg = "Verifique se as informações da seleçao atualizada foi retornada corretamente"
         self.assertEqual(expected_data, result_data, msg)
 
         team = Team.objects.get(id=1)
         for key, value in expected_data.items():
             obj_value = getattr(team, key)
-            if isinstance(obj_value, date):
-                obj_value = obj_value.strftime("%Y-%m-%d")
             msg = f"Verifique se as alterações no campo `{key}` foram persistidas no banco"
             self.assertEqual(value, obj_value, msg)
 
@@ -58,7 +54,7 @@ class TeamViewsTest(APITestCase):
             "titles": 5,
             "top_scorer": "Pelé",
             "fifa_code": "BRA",
-            "first_cup": "1904-06-08",
+            "first_cup": "1930-07-13",
         }
         # Criando time 1
         Team.objects.create(**team_1_data)
@@ -85,7 +81,7 @@ class TeamViewsTest(APITestCase):
             "titles": 5,
             "top_scorer": "Pelé",
             "fifa_code": "BRA",
-            "first_cup": "1904-06-08",
+            "first_cup": "1930-07-13",
         }
 
         # Criando time 1
@@ -105,7 +101,7 @@ class TeamViewsTest(APITestCase):
 
         result_data = response.json()
         msg = (
-            "Verifique as informações das seleções listatas no GET "
+            "Verifique as informações da seleção retornada no GET "
             + f"em `{self.BASE_URL}` estão corretas."
         )
         self.assertEqual(expected_data, result_data, msg)
