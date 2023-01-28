@@ -1,4 +1,3 @@
-from datetime import date
 from rest_framework.test import APITestCase
 from teams.models import Team
 from rest_framework.views import status
@@ -26,9 +25,11 @@ class TeamViewsTest(APITestCase):
             "titles": 1000,
             "top_scorer": "Alejo",
             "fifa_code": "BRR",
-            "first_cup": "2020-03-03"
+            "first_cup": "2020-03-03",
         }
-        response = self.client.patch(self.BASE_DETAIL_URL, data=team_1_patch_data, format='json')
+        response = self.client.patch(
+            self.BASE_DETAIL_URL, data=team_1_patch_data, format="json"
+        )
 
         expected_status_code = status.HTTP_200_OK
         result_status_code = response.status_code
@@ -48,7 +49,7 @@ class TeamViewsTest(APITestCase):
             obj_value = getattr(team, key)
             if isinstance(obj_value, date):
                 obj_value = obj_value.strftime("%Y-%m-%d")
-            msg = f'Verifique se as alterações no campo `{key}` foram persistidas no banco'
+            msg = f"Verifique se as alterações no campo `{key}` foram persistidas no banco"
             self.assertEqual(value, obj_value, msg)
 
     def test_if_a_team_can_be_deleted(self):
@@ -78,7 +79,7 @@ class TeamViewsTest(APITestCase):
         msg = "Verifique se o registro está sendo deletado do banco corretamente"
         self.assertFalse(Team.objects.exists(), msg)
 
-    def test_if_a_team_can_be_retrieve(self):
+    def test_if_a_team_can_be_retrieved(self):
         team_1_data = {
             "name": "Brasil",
             "titles": 5,
@@ -109,7 +110,7 @@ class TeamViewsTest(APITestCase):
         )
         self.assertEqual(expected_data, result_data, msg)
 
-    def test_if_non_existing_id_deletion(self):
+    def test_non_existing_id_delete(self):
         non_existing_id_url = self.BASE_URL + "12234/"
         response = self.client.delete(non_existing_id_url)
 
@@ -126,7 +127,7 @@ class TeamViewsTest(APITestCase):
         msg = "Verifique se a mensagem de DELETE com id inválido está correta"
         self.assertDictEqual(expected, result, msg)
 
-    def test_if_non_existing_id_update(self):
+    def test_non_existing_id_update(self):
         non_existing_id_url = self.BASE_URL + "12234/"
         response = self.client.patch(non_existing_id_url)
 
@@ -143,7 +144,7 @@ class TeamViewsTest(APITestCase):
         msg = "Verifique se a mensagem de PATCH com id inválido está correta"
         self.assertDictEqual(expected, result, msg)
 
-    def test_if_non_existing_id_retrieve(self):
+    def test_non_existing_id_retrieve(self):
         non_existing_id_url = self.BASE_URL + "12234/"
         response = self.client.get(non_existing_id_url)
 
@@ -159,5 +160,3 @@ class TeamViewsTest(APITestCase):
         result = response.json()
         msg = "Verifique se a mensagem de GET com id inválido está correta"
         self.assertDictEqual(expected, result, msg)
-
-
