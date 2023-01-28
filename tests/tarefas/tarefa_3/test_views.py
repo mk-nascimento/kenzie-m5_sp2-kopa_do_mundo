@@ -45,6 +45,8 @@ class TeamViewsTest(APITestCase):
         team = Team.objects.get(id=1)
         for key, value in expected_data.items():
             obj_value = getattr(team, key)
+            if isinstance(obj_value, date):
+                obj_value = obj_value.strftime("%Y-%m-%d")
             msg = f"Verifique se as alterações no campo `{key}` foram persistidas no banco"
             self.assertEqual(value, obj_value, msg)
 
