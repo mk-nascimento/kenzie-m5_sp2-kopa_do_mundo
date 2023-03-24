@@ -56,6 +56,8 @@ A partir de agora, para os testes das tarefas 1, 2 e 3, já que começaremos a u
 DJANGO_SETTINGS_MODULE = <nome_do_projeto>.settings
 ```
 
+**IMPORTANTE**:  Troque <nome_do_projeto> para o nome do pacote onde fica o arquivo settings.py do projeto Django.
+
 - Tarefa 1
 
 
