@@ -58,18 +58,24 @@ DJANGO_SETTINGS_MODULE = <nome_do_projeto>.settings
 
 **IMPORTANTE**:  Troque <nome_do_projeto> para o nome do pacote onde fica o arquivo settings.py do projeto Django.
 
-- Tarefa 1
+- Tarefa 0
 
+
+```shell
+pytest --testdox -vvs tests/tarefas/tarefa_0/
+```
+
+- Tarefa 1
 
 ```shell
 pytest --testdox -vvs tests/tarefas/tarefa_1/
 ```
-
 - Tarefa 2
 
 ```shell
 pytest --testdox -vvs tests/tarefas/tarefa_2/
 ```
+
 - Tarefa 3
 
 ```shell
@@ -84,15 +90,8 @@ Você também pode rodar cada método de teste isoladamente:
 pytest --testdox -vvs caminho/para/o/arquivo/de/teste::NomeDaClasse::nome_do_metodo_de_teste
 ```
 
-Exemplo: executar somente "test_can_get_product_by_id".
+Exemplo: executar somente "test_object_representation"
 
 ```shell
-pytest --testdox -vvs tests/tarefas/tarefa_1/test_get_product_by_id.py::TestGetProductById::test_can_get_product_by_id
-```
----
-
-Os testes referentes as funcionalidades extras não são executados por padrão caso você não especifique o caminho até eles. Então caso você queira os executar, rode:
-
-```shell
-pytest --testdox -vvs tests/tarefas/tarefa_3/extra_add_product.py
+pytest --testdox -vvs tests/tarefas/tarefa_1/test_model.py::TeamModelTest::test_object_representation
 ```
