@@ -98,3 +98,8 @@ Exemplo: executar somente "test_object_representation"
 ```shell
 pytest --testdox -vvs tests/tarefas/tarefa_1/test_model.py::TeamModelTest::test_object_representation
 ```
+
+Caso queira, também é possível rodar todos os testes de uma vez:
+```shell
+pytest --testdox -vvs
+```
