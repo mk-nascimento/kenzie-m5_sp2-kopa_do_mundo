@@ -14,29 +14,33 @@ pip uninstall pytest pytest-testdox -y
 
 ## Próximos passos:
 
-### 1 Crie seu ambiente virtual:
+### 1. Crie seu ambiente virtual:
 ```shell
 python -m venv venv
 ```
 
-### 2 Ative seu venv:
+### 2. Ative seu venv:
 
 ```shell
-# linux:
+# Linux:
 source venv/bin/activate
 
-# windows:
+# Windows (PowerShell):
 .\venv\Scripts\activate
+
+# Windows (GitBash):
+source venv/Scripts/activate
 ```
 
-### 3 Instalar o pacote <strong>pytest-testdox</strong>:
+
+### 3. Instalar o pacote <strong>pytest-testdox</strong>:
 
 ```shell
 pip install pytest-testdox pytest-django
 ```
 
 
-### 4 Rodar os testes referentes a cada tarefa isoladamente:
+### 4. Rodar os testes referentes a cada tarefa isoladamente:
 
 Exemplo:
 
@@ -53,7 +57,7 @@ A partir de agora, para os testes das tarefas 2, 3 e 4, já que começaremos a u
 
 ```python
 [pytest]
-DJANGO_SETTINGS_MODULE = <nome_do_projeto>.settings
+DJANGO_SETTINGS_MODULE = kopa_do_mundo.settings
 ```
 
 **IMPORTANTE**:  Troque <nome_do_projeto> para o nome do pacote onde fica o arquivo settings.py do projeto Django.
