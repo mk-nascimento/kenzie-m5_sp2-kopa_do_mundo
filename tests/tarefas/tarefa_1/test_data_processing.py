@@ -98,7 +98,6 @@ class TestDataProcessing(unittest.TestCase):
 
         with self.assertRaises(ImpossibleTitlesError) as err:
             data_processing(data)
-            self.assertIsInstance(err.exception, 'teste')
 
         self.assertEqual(str(err.exception), 'impossible to have more titles than disputed cups', msg)
 
