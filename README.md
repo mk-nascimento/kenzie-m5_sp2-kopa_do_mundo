@@ -60,6 +60,7 @@ A partir de agora, para os testes das tarefas 2, 3 e 4, já que começaremos a u
 DJANGO_SETTINGS_MODULE = kopa_do_mundo.settings
 ```
 
+Após isso, você pode executar os comandos abaixo para rodar os testes:
 - Tarefa 1
 
 ```shell
