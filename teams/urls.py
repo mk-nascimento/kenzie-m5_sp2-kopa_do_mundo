@@ -1,5 +1,8 @@
 from django.urls import path
-from .views import TeamView
+from . import views
 
 
-urlpatterns = [path("teams/", TeamView.as_view())]
+urlpatterns = [
+    path("teams/", views.TeamView.as_view()),
+    path("teams/<int:team_id>/", views.TeamDetailView.as_view()),
+]
