@@ -25,7 +25,7 @@ def data_processing(soccer_time_info: dict):
     years_after_first_world_cup: int = soccer_time_first_cup_year - first_world_cup
     years_after_first_participation = current_year - soccer_time_first_cup_year
 
-    if years_after_first_world_cup % 4:
+    if years_after_first_world_cup % 4 or soccer_time_first_cup_year < first_world_cup:
         raise InvalidYearCupError()
 
     cups_after_first_participation: int = math.floor(
