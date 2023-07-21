@@ -1,25 +1,32 @@
 # M5 - Kopa do Mundo
 
-## Como rodar os testes localmente
- - Verifique se os pacotes pytest e/ou pytest-testdox estão instalados globalmente em seu sistema:
+## Preparando ambiente para execução dos testes
+### Procedimentos para rodar os testes da tarefa 1
+1. Faça a instalação das bibliotecas de teste:
+```shell
+pip install pytest-testdox pytest-django
+```
+2. Use o comando abaixo para rodar os testes referentes à tarefa 1:
+```shell
+pytest --testdox -vvs tests/tarefas/tarefa_1/
+```
+---
+### Procedimentos para rodar os testes a partir da tarefa 2
+#### 1. Verifique se os pacotes pytest, pytest-testdox e/ou pytest-django estão instalados globalmente em seu sistema:
 ```shell
 pip list
 ```
-- Caso seja listado o pytest e/ou pytest-testdox e/ou pytest-django em seu ambiente global, utilize os seguintes comando para desinstalá-los globalmente:
+#### 2. Caso eles apareçam na listagem, rode os comandos abaixo para realizar a desinstalação:
 
 ```shell
 pip uninstall pytest pytest-testdox -y
 ```
----
-
-## Próximos passos:
-
-### 1. Crie seu ambiente virtual:
+#### 3. Após isso, crie seu ambiente virtual:
 ```shell
 python -m venv venv
 ```
 
-### 2. Ative seu venv:
+#### 4. Ative seu ambiente virtual:
 
 ```shell
 # Linux:
@@ -33,34 +40,19 @@ source venv/Scripts/activate
 ```
 
 
-### 3. Instalar o pacote <strong>pytest-testdox</strong>:
+#### 5. Instale as bibliotecas necessárias:
 
 ```shell
 pip install pytest-testdox pytest-django
 ```
 
-
-### 4. Rodar os testes referentes a cada tarefa isoladamente:
-
-Exemplo:
-
-- Tarefa 1
-
-```shell
-pytest --testdox -vvs tests/tarefas/tarefa_1/
-```
-
----
-
-## Execução de testes a partir da tarefa 2
-A partir de agora, para os testes das tarefas 2, 3 e 4, já que começaremos a usar o Django, precisaremos de um arquivo **pytest.ini**, você **DEVE** cria-lo na raiz do projeto, depois de criar esse aquivo você precisa adicionar nele a seguinte configuração:
-
+#### 6. Como, a partir da tarefa 2, você utilizará Django, é necessário criar um arquivo bem importante: **pytest.ini**. Crie-o na raiz do projeto e adicione dentro dele o seguindo texto:
 ```python
 [pytest]
 DJANGO_SETTINGS_MODULE = kopa_do_mundo.settings
 ```
 
-Após isso, você pode executar os comandos abaixo para rodar os testes:
+Após isso, você pode executar os comandos abaixo para rodar os testes (inclusive da tarefa 1):
 - Tarefa 1
 
 ```shell
