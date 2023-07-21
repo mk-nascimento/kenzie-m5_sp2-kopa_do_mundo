@@ -12,21 +12,21 @@ pytest --testdox -vvs tests/tarefas/tarefa_1/
 ```
 ---
 ### Procedimentos para rodar os testes a partir da tarefa 2
-#### 1. Verifique se os pacotes pytest, pytest-testdox e/ou pytest-django estão instalados globalmente em seu sistema:
+1. Verifique se os pacotes pytest, pytest-testdox e/ou pytest-django estão instalados globalmente em seu sistema:
 ```shell
 pip list
 ```
-#### 2. Caso eles apareçam na listagem, rode os comandos abaixo para realizar a desinstalação:
+2. Caso eles apareçam na listagem, rode os comandos abaixo para realizar a desinstalação:
 
 ```shell
 pip uninstall pytest pytest-testdox -y
 ```
-#### 3. Após isso, crie seu ambiente virtual:
+3. Após isso, crie seu ambiente virtual:
 ```shell
 python -m venv venv
 ```
 
-#### 4. Ative seu ambiente virtual:
+4. Ative seu ambiente virtual:
 
 ```shell
 # Linux:
@@ -40,13 +40,13 @@ source venv/Scripts/activate
 ```
 
 
-#### 5. Instale as bibliotecas necessárias:
+5. Instale as bibliotecas necessárias:
 
 ```shell
 pip install pytest-testdox pytest-django
 ```
 
-#### 6. Como, a partir da tarefa 2, você utilizará Django, é necessário criar um arquivo bem importante: **pytest.ini**. Crie-o na raiz do projeto e adicione dentro dele o seguindo texto:
+6. Como, a partir da tarefa 2, você utilizará Django, é necessário criar um arquivo bem importante: **pytest.ini**. Crie-o na raiz do projeto e adicione dentro dele o seguindo texto:
 ```python
 [pytest]
 DJANGO_SETTINGS_MODULE = kopa_do_mundo.settings
