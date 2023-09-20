@@ -19,7 +19,7 @@ pip list
 2. Caso eles apareçam na listagem, rode os comandos abaixo para realizar a desinstalação:
 
 ```shell
-pip uninstall pytest pytest-testdox -y
+pip uninstall pytest pytest-testdox pytest-django -y
 ```
 3. Após isso, crie seu ambiente virtual:
 ```shell
@@ -29,7 +29,7 @@ python -m venv venv
 4. Ative seu ambiente virtual:
 
 ```shell
-# Linux:
+# Linux e Mac:
 source venv/bin/activate
 
 # Windows (PowerShell):
